@@ -3,10 +3,10 @@
 apt update && apt upgrade -y
 ```
 ```
-git clone https://github.com/ricoogh/ubot
+git clone https://github.com/octozyy/UbotNew
 ```
 ```
-cd ubot && screen -S ubot
+cd UbotNew && screen -S UbotNew
 ```
 ```
 apt install ffmpeg -y
@@ -18,7 +18,7 @@ bash installnode.sh
 apt install python3.10-venv
 ```
 ```
-python3 -m venv ubot && source ubot/bin/activate
+python3 -m venv UbotNew && source UbotNew/bin/activate
 ```
 ```
 pip3 install -r requirements.txt
@@ -27,7 +27,7 @@ pip3 install -r requirements.txt
 cp sample.env .env && nano .env
 ```
 ```
-screen -S ubot
+screen -S UbotNew
 ```
 ```
 python3 -m PyroUbot
@@ -36,13 +36,13 @@ python3 -m PyroUbot
 ---------- Menghidupan jika ubot mati -------------
 ```
 ```
-cd ubotalfnew && screen -S ubotalfnew
+cd UbotNew && screen -S UbotNew
 ```
 ```
 python3 -m venv venv && source venv/bin/activate
 ```
 ```
-screen -S ubotalfnew
+screen -S UbotNew
 ```
 ```
 python3 -m PyroUbot
