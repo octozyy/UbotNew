@@ -1,10 +1,10 @@
-import asyncio
+import asyncio, sys
 
-# 🔧 Perbaikan: pastikan event loop aktif sebelum pyrogram diimpor
-try:
-    asyncio.get_running_loop()
-except RuntimeError:
-    asyncio.set_event_loop(asyncio.new_event_loop())
+if sys.version_info >= (3, 10):
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
 
 import uvloop
 uvloop.install()
