@@ -17,7 +17,7 @@ OWNER_ID = int(os.getenv("OWNER_ID", "6615675254"))
 
 BLACKLIST_CHAT = list(map(int, os.getenv("BLACKLIST_CHAT", "-1002125842026 -1002053287763").split()))
 
-RMBG_API = os.getenv("RMBG_API", "a6qxsmMJ3CsNo7HyxuKGsP1o")
+RMBG_API = os.getenv("RMBG_API", "9JhGsK6DJBxx5i3TQAiAqF4s")
 
 MONGO_URL = os.getenv("MONGO_URL", "mongodb+srv://fizzpamell:fizzpamell@cluster0.9nmhi5m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
