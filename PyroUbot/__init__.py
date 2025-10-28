@@ -1,13 +1,16 @@
-import uvloop
+import asyncio
 
-uvloop.install()
+# Pastikan event loop aktif (fix error MainThread)
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    asyncio.set_event_loop(asyncio.new_event_loop())
 
 import logging
 import os
 import re
-
 from pyrogram import Client, filters
-from pyrogram.enums import ParseMode 
+from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pytgcalls import PyTgCalls
