@@ -13,8 +13,8 @@ import logging
 import os
 import re
 from pyrogram import Client, filters
-from pyrogram.enums import ParseMode 
-from pyrogram.handlers import CallbackQueryHandler, MessageHandler
+from pyrogram.enums import ParseMode
+from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import Message
 from pytgcalls import PyTgCalls
 from pytgcalls import filters as fl
@@ -31,9 +31,8 @@ class ConnectionHandler(logging.Handler):
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
 
-formatter = logging.Formatter("[%(levelname)s] - %(name)s - %(message)s", "%d-%b %H:%M")
+formatter = logging.Formatter("[%(levelname)s] - %(name)s - %(message)s")
 stream_handler = logging.StreamHandler()
-
 stream_handler.setFormatter(formatter)
 connection_handler = ConnectionHandler()
 
@@ -41,7 +40,15 @@ logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 logging.getLogger("pytgcalls").setLevel(logging.WARNING)
 
-aiosession = ClientSession()
+# ✅ fix bagian ini
+aiosession = None
+
+async def init_aiosession():
+    global aiosession
+    if aiosession is None:
+        aiosession = ClientSession()
+
+asyncio.get_event_loop().run_until_complete(init_aiosession())
 
 class Bot(Client):
     def __init__(self, **kwargs):
