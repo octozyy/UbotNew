@@ -1,20 +1,27 @@
 import asyncio
 import sys
+import os
 
-# Matikan modul uvloop dari library lain
+# ======== FIX UVLOOP ERROR (FINAL VERSION) ========
+
+# Blokir modul uvloop agar tidak dipakai oleh Pyrogram/pytgcalls
 sys.modules["uvloop"] = None
 
-# Buat event loop baru kalau belum ada
+# Paksa event loop baru agar tersedia di thread utama
 try:
     asyncio.get_running_loop()
 except RuntimeError:
     asyncio.set_event_loop(asyncio.new_event_loop())
 
+# Pastikan Python tidak pakai policy uvloop lama
+asyncio.set_event_loop_policy(asyncio.DefaultEventLoopPolicy())
+
+# ==================================================
+
 import logging
-import os
 import re
 from pyrogram import Client, filters
-from pyrogram.enums import ParseMode
+from pyrogram.enums import ParseMode 
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pytgcalls import PyTgCalls
