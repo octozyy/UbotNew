@@ -1,15 +1,16 @@
 import asyncio
-import uvloop
 
-# Perbaikan untuk Python 3.10+ agar event loop aktif
+# 🔧 Perbaikan: pastikan event loop aktif sebelum pyrogram diimpor
 try:
     asyncio.get_running_loop()
 except RuntimeError:
     asyncio.set_event_loop(asyncio.new_event_loop())
 
+import uvloop
 uvloop.install()
 
 import logging
+import os
 import re
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode 
