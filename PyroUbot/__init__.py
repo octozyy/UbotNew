@@ -1,10 +1,10 @@
 import asyncio
 import sys
 
-# === FIX: Matikan uvloop sepenuhnya ===
+# Matikan modul uvloop dari library lain
 sys.modules["uvloop"] = None
 
-# === Pastikan event loop aktif ===
+# Buat event loop baru kalau belum ada
 try:
     asyncio.get_running_loop()
 except RuntimeError:
